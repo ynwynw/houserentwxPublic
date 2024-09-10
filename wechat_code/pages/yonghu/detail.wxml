@@ -1,0 +1,103 @@
+<view class="detail-container">
+<view class="content"   bind:tap="authTap">
+
+
+
+
+<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" class="swiper" vertical="{{false}}" interval="{{5000}}" duration="{{500}}"  indicator-color='#6484ff30'   indicator-active-color="#6484ff"   autoplay="{{true}}"  circular="{{true}}">
+<swiper-item class="swiper-item"  wx:for="{{picture}}"   wx:key="{{index}}">
+    <image src="{{baseURL+item}}" mode="aspectFit"   class="swiper-img"></image>
+    <view   wx:if="$conf.menu.flag"  class="swiper-title">{{item.title}}</view>
+</swiper-item>
+</swiper>
+
+
+
+
+<view class="detail-box">
+
+
+<view class="detail-item-box" >
+<view class="detail-item-label">用户姓名：</view>
+<view class="detail-item-text">{{detailList.yonghuxingming}}</view>
+</view>
+
+
+<view class="detail-detail-img-box">
+<view class="detail-item-label">头像：</view>
+<image class="detail-detail-img-img" wx:if="{{detailList.touxiang}}"  src="{{baseURL+picture[0]}}"></image>
+</view>
+
+<view class="detail-item-box" >
+<view class="detail-item-label">性别：</view>
+<view class="detail-item-text">{{detailList.xingbie}}</view>
+</view>
+
+
+
+<view class="detail-item-box" >
+<view class="detail-item-label">手机号码：</view>
+<view class="detail-item-text">{{detailList.shoujihaoma}}</view>
+</view>
+
+
+
+
+
+
+
+<view  class="detail-item-box">
+<view class="detail-item-label">审核状态：</view>
+<view wx:if="{{detailList.sfsh=='是'}}" class="text" class="detail-item-text">通过</view>
+<view wx:if="{{detailList.sfsh=='否'}}" class="text" class="detail-item-text">不通过</view>
+<view wx:if="{{detailList.sfsh=='待审核'}}" class="text" class="detail-item-text">待审核</view>
+</view>
+<view class="detail-item-box">
+<view class="detail-item-label">回复内容</view>
+<view class="detail-item-text">{{detailList.shhf}}</view>
+</view>
+
+
+
+
+
+
+
+
+
+</view>
+
+
+
+
+
+
+
+
+<view class="operate-box">
+
+<com-popup id="bottomFrame" className="reply-popup">
+<view style="padding: 10px;display: flex;justify-content: space-between;flex-wrap: wrap;">
+    <view style="width: 100%;margin: 20rpx;text-align: center;">
+        <picker   class="down-item-picker"     bindchange="sfshChange" value="{{sfshIndex}}"  range="{{sfshOptions}}">
+            <view class="down-item-picker-text">
+                {{sfshIndex||sfshIndex==0?sfshOptions[sfshIndex]:"选择审核结果"}}
+            </view>
+        </picker>
+    </view>
+    <textarea style="max-height: 88rpx;margin-bottom: 20rpx;" model:value="{{shhf}}" placeholder="审核回复"></textarea>
+    <view style="display: flex;justify-content: space-between;text-align: center;width: 100%;align-items: center;">
+        <button bind:tap="canlreply" style="height: 88rpx;line-height: 88rpx;color:#999">取消</button>
+        <button bind:tap="reply"style="background:#0f8cdc;color:#fff;height:88rpx;line-height: 88rpx;">确认</button>
+    </view>
+</view>
+</com-popup>
+
+<button  class="addCart" wx:if="{{isAuth}}" bind:tap="onSHTap" >审核</button>
+<button  class="addCart" wx:if="{{isAuthFront}}" bind:tap="onSHTap" >审核</button>
+
+
+</view>
+
+</view>
+</view>

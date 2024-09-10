@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cl.dao.FangyuanxinxiDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cl.entity.FangyuanxinxiEntity" id="fangyuanxinxiMap">
+        <result property="fangwumingcheng" column="fangwumingcheng"/>
+        <result property="fangwutupian" column="fangwutupian"/>
+        <result property="fangwuleixing" column="fangwuleixing"/>
+        <result property="fangwumianji" column="fangwumianji"/>
+        <result property="fangwudizhi" column="fangwudizhi"/>
+        <result property="zulinjiage" column="zulinjiage"/>
+        <result property="fangwujieshao" column="fangwujieshao"/>
+        <result property="fangdongzhanghao" column="fangdongzhanghao"/>
+        <result property="fangdongxingming" column="fangdongxingming"/>
+        <result property="fangwuzhuangtai" column="fangwuzhuangtai"/>
+        <result property="diqu" column="diqu"/>
+        <result property="storeupnum" column="storeupnum"/>
+        <result property="longitude" column="longitude"/>
+        <result property="latitude" column="latitude"/>
+        <result property="fulladdress" column="fulladdress"/>
+        <result property="clicktime" column="clicktime"/>
+        <result property="clicknum" column="clicknum"/>
+        <result property="userid" column="userid"/>
+        <result property="sfsh" column="sfsh"/>
+        <result property="shhf" column="shhf"/>
+    </resultMap>
+
+    <select id="selectListView"
+		resultType="com.cl.entity.view.FangyuanxinxiView" >
+
+		SELECT  fangyuanxinxi.* FROM fangyuanxinxi  fangyuanxinxi 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.cl.entity.view.FangyuanxinxiView" >
+		SELECT * FROM fangyuanxinxi  fangyuanxinxi <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+
+</mapper>
